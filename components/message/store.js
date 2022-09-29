@@ -10,14 +10,16 @@ db.connect("mongodb+srv://root:root@cluster0.hau4sfc.mongodb.net/test", {
 console.log("[db] Conectada con éxito");
 
 function addMessage(message) {
-  // list.push(message);
   const myMessage = new Model(message);
   myMessage.save();
 }
 
-async function getMessage() {
-  // return list;
-  const messages = await Model.find();
+async function getMessage(filterUser) {
+  let filter = {};
+  if (filterUser !== null) {
+    filter = { user: filterUser };
+  }
+  const messages = await Model.find(filter);
   return messages;
 }
 
