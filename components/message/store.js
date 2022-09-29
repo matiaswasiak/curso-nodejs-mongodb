@@ -1,13 +1,4 @@
-const db = require("mongoose");
 const Model = require("./model");
-
-db.Promise = global.Promise;
-db.connect("mongodb+srv://root:root@cluster0.hau4sfc.mongodb.net/test", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  dbName: "Telegrom",
-});
-console.log("[db] Conectada con éxito");
 
 function addMessage(message) {
   const myMessage = new Model(message);
